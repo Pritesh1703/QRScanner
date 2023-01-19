@@ -6,31 +6,25 @@
     <body>
         <script>
             $(document).ready(function(){
-                console.log("ready")
-                if(navigator.userAgent.toLowerCase().indexOf("macintosh") > -1){
+                if(navigator.userAgent.toLowerCase().indexOf("android") > -1 ||
+                    navigator.userAgent.toLowerCase().indexOf("windows") > -1
+                ){
                     console.log("ready")
                     setTimeout(function(){
-                        window.location="https://apps.apple.com/in/app/whatsapp-messenger/id310633997"
-                    },5000)
-                    window.location="Whatsapp://"
-                }
-
-                if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
-                    console.log("ready")
-                    setTimeout(function(){
-                        window.location="https://play.google.com/store/apps/details?id=com.whatsapp&hl=en_IN&gl=US"
+                        window.location="https://play.google.com/store/apps/details?id=com.barclaycardus&hl=en_US&gl=US"
                     },25)
-                    window.location="Postman://"
+                    window.location="barclaycardus://home"
                 }
 
                 if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1 ||
                    navigator.userAgent.toLowerCase().indexOf("ipad") > -1 ||
-                   navigator.userAgent.toLowerCase().indexOf("ipod") > -1
+                   navigator.userAgent.toLowerCase().indexOf("ipod") > -1 ||
+                   navigator.userAgent.toLowerCase().indexOf("macintosh") > -1
                 ){
                     setTimeout(function(){
-                        window.location="https://apps.apple.com/in/app/whatsapp-messenger/id310633997"
+                        window.location="https://apps.apple.com/us/app/barclays-us-credit-cards/id425199399"
                     },25)
-                    window.location="Postman://"
+                    window.location="barclaycardus://"
                 }
             });
         </script>
