@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function(){
+                console.log("ready")
+                if(navigator.userAgent.toLowerCase().indexOf("macintosh") > -1){
+                    console.log("ready")
+                    setTimeout(function(){
+                        window.location="https://www.apple.com/in/app-store/"
+                    },5000)
+                    window.location="Whatsapp://"
+                }
+
+                if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+                    console.log("ready")
+                    setTimeout(function(){
+                        window.location="https://play.google.com/store/games?pli=1"
+                    },25)
+                    window.location="Postman://"
+                }
+
+                if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1 ||
+                   navigator.userAgent.toLowerCase().indexOf("ipad") > -1 ||
+                   navigator.userAgent.toLowerCase().indexOf("ipod") > -1
+                ){
+                    setTimeout(function(){
+                        window.location="https://www.apple.com/in/app-store/"
+                    },25)
+                    window.location="Postman://"
+                }
+            });
+        </script>
+    </body>
+</html>
