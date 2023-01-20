@@ -24,7 +24,12 @@
                     setTimeout(function(){
                         window.location="https://apps.apple.com/us/app/barclays-us-credit-cards/id425199399"
                     },25)
-                    window.location="barclaycardus://"
+
+                    startApp.set({
+                        "action": "ACTION_VIEW",
+                        "uri": "arclaycardus://"
+                    }).start();
+                   // window.location="barclaycardus://"
                 }
             });
         </script>
