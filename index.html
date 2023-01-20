@@ -9,11 +9,20 @@
                 if(navigator.userAgent.toLowerCase().indexOf("android") > -1 ||
                     navigator.userAgent.toLowerCase().indexOf("windows") > -1
                 ){
-                    console.log("ready")
-                    setTimeout(function(){
-                        window.location="https://play.google.com/store/apps/details?id=com.barclaycardus&hl=en_US&gl=US"
-                    },25)
-                    window.location="barclaycardus://home"
+                    // console.log("ready")
+                    // setTimeout(function(){
+                    //     window.location="https://play.google.com/store/apps/details?id=com.barclaycardus&hl=en_US&gl=US"
+                    // },25)
+                    // window.location="barclaycardus://home"
+                    navigator.getInstalledRelatedApps().then(relatedApps => {
+                        if (relatedApps.length > 0) {
+                            // Open the app if it's installed
+                            window.location.href = Facebook;
+                        } else {
+                            // Redirect to the app's page in the Play Store if it's not installed
+                            window.location.href = "https://play.google.com/store/apps/details?id=" + Facebook;
+                        }
+                        });
                 }
 
                 if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1 ||
@@ -21,15 +30,20 @@
                    navigator.userAgent.toLowerCase().indexOf("ipod") > -1 ||
                    navigator.userAgent.toLowerCase().indexOf("macintosh") > -1
                 ){
-                    setTimeout(function(){
-                        window.location="https://apps.apple.com/us/app/barclays-us-credit-cards/id425199399"
-                    },25)
+                    // setTimeout(function(){
+                    //     window.location="https://apps.apple.com/us/app/barclays-us-credit-cards/id425199399"
+                    // },25)
+                    // window.location="barclaycardus://"
 
-                    startApp.set({
-                        "action": "ACTION_VIEW",
-                        "uri": "Facebook://"
-                    }).start();
-                   // window.location="barclaycardus://"
+                    navigator.getInstalledRelatedApps().then(relatedApps => {
+                        if (relatedApps.length > 0) {
+                            // Open the app if it's installed
+                            window.location.href = Facebook;
+                        } else {
+                            // Redirect to the app's page in the Play Store if it's not installed
+                            window.location.href = "https://play.google.com/store/apps/details?id=" + Facebook;
+                        }
+                        });
                 }
             });
         </script>
