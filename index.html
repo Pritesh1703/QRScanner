@@ -6,11 +6,19 @@
     <body>
         <script>
             $(document).ready(function(){
+                var regex= /[?&]lastFour=([0-9]{4})$/;
+                var lastFour=location.search.substring(10);
                 if(navigator.userAgent.toLowerCase().indexOf("android") > -1 ){
                     setTimeout(function(){
                         window.location.href="https://play.google.com/store/apps/details?id=com.barclaycardus&hl=en_US&gl=US"
                     },25)
-                    window.location.href="barclaycardus://payments//"
+                   if(regex.test(location.search)){
+                        window.location.href="barclaycardus://emailLink/payments//"
+                    
+                    }else{
+                       window.location.href=`barclaycardus://emailLink/payments/lastFour:${lastFour}`;
+                    
+                    }
                 }
 
                 if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1 ||
@@ -21,7 +29,15 @@
                     setTimeout(function(){
                         window.location.href="https://apps.apple.com/us/app/barclays-us-credit-cards/id425199399"
                     },25)
-                    window.location.href="barclaycardus://payments//"
+                    
+                    if(regex.test(location.search)){
+                        window.location.href="barclaycardus://emailLink/payments//"
+                    
+                    }else{
+                       window.location.href=`barclaycardus://emailLink/payments/lastFour:${lastFour}`;
+                    
+                    }
+                    
                 }
                 
                 if(navigator.userAgent.toLowerCase().indexOf("windows") > -1 ||
