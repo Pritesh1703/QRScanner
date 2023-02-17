@@ -5,17 +5,35 @@
     </head>
     <body>
         <script>
+            //getting query parameter from url
+            function getUrlVars()
+            {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for(var i = 0; i < hashes.length; i++)
+                {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+            
             $(document).ready(function(){
-                var regex= /[?&]lastFour=([0-9]{4})$/;
-                var lastFour=location.search.substring(10);
+                
+                console.log(getUrlVars()["source"]);
+                console.log(getUrlVars()["linkType"]);
+                console.log(getUrlVars()["type"]);
+                console.log(getUrlVars()["lastFour"]);
+                
                 if(navigator.userAgent.toLowerCase().indexOf("android") > -1 ){
                     setTimeout(function(){
                         window.location.href="https://play.google.com/store/apps/details?id=com.barclaycardus&hl=en_US&gl=US"
                     },25)
-                   if(regex.test(location.search)){
-                           window.location.href=`barclaycardus://emaillink/payments/lastFour:${lastFour}`;
+                   if(getUrlVars()["lastFour"]){
+                        window.location.href=`barclaycardus://${getUrlVars()["linkType"]}/${getUrlVars()["type"]}/lastFour:${getUrlVars()["lastFour"]}`;
                     }else{
-                            window.location.href="barclaycardus://emaillink/payments/"
+                         window.location.href=`barclaycardus://${getUrlVars()["linkType"]}/${getUrlVars()["type"]}`
                     
                     }
                 }
@@ -29,10 +47,10 @@
                         window.location.href="https://apps.apple.com/us/app/barclays-us-credit-cards/id425199399"
                     },25)
                     
-                    if(regex.test(location.search)){
-                           window.location.href=`barclaycardus://emaillink/payments/lastFour:${lastFour}`;
+                    if(getUrlVars()["lastFour"]){
+                          window.location.href=`barclaycardus://${getUrlVars()["linkType"]}/${getUrlVars()["type"]}/lastFour:${getUrlVars()["lastFour"]}`;
                     }else{
-                            window.location.href="barclaycardus://emaillink/payments/"
+                          window.location.href=`barclaycardus://${getUrlVars()["linkType"]}/${getUrlVars()["type"]}`
                     
                     }
                     
